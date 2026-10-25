@@ -1,24 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Globe } from "lucide-react";
 import { useAudio } from "@/components/AudioEngine";
 
+const ROLES = ["PRODUCT DESIGNER", "SYSTEMS ARCHITECT", "CREATIVE ENGINEER"] as const;
+
 export function EditorialHero() {
   const { playSound } = useAudio();
-  const [headlineRole, setHeadlineRole] = useState<"PRODUCT DESIGNER" | "SYSTEMS ARCHITECT" | "CREATIVE ENGINEER">("PRODUCT DESIGNER");
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  // Automatically switch role title every 3.5 seconds (User Request 2)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % ROLES.length);
+    }, 3500);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const headlineRole = ROLES[roleIndex];
 
   const toggleRole = () => {
     playSound("click");
-    setHeadlineRole((prev) =>
-      prev === "PRODUCT DESIGNER"
-        ? "SYSTEMS ARCHITECT"
-        : prev === "SYSTEMS ARCHITECT"
-        ? "CREATIVE ENGINEER"
-        : "PRODUCT DESIGNER"
-    );
+    setRoleIndex((prev) => (prev + 1) % ROLES.length);
   };
 
   const scrollToContact = () => {
@@ -27,34 +34,41 @@ export function EditorialHero() {
   };
 
   return (
-    <section className="relative min-h-screen bg-[#141518] text-[#ECEBE6] pt-28 sm:pt-32 pb-16 px-4 sm:px-8 lg:px-12 flex flex-col justify-between overflow-hidden select-none">
+    <section className="relative min-h-[90vh] sm:min-h-screen bg-[#141518] text-[#ECEBE6] pt-20 sm:pt-32 pb-8 sm:pb-16 px-4 sm:px-8 lg:px-12 flex flex-col justify-between overflow-hidden select-none">
       
-      {/* 1. Giant Condensed Typography Headline */}
-      <div className="w-full pt-2 sm:pt-8 text-center sm:text-left">
-        <h1
-          onClick={toggleRole}
-          title="Click to toggle title"
-          className="font-anton uppercase tracking-tight text-[#ECEBE6] text-[11.5vw] sm:text-[13vw] leading-[0.9] sm:leading-[0.88] cursor-pointer hover:opacity-95 transition-opacity select-none"
-        >
-          {headlineRole}
-        </h1>
+      {/* 1. Giant Condensed Typography Headline (Auto-Cycles with Smooth Transition) */}
+      <div className="w-full pt-1 sm:pt-6 text-center sm:text-left h-[12vw] sm:h-[13vw] min-h-[54px] sm:min-h-[110px] flex items-center justify-center sm:justify-start">
+        <AnimatePresence mode="wait">
+          <motion.h1
+            key={headlineRole}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -14 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            onClick={toggleRole}
+            title="Click or wait to switch title"
+            className="font-anton uppercase tracking-tight text-[#ECEBE6] text-[10.5vw] sm:text-[13vw] leading-[0.9] sm:leading-[0.88] cursor-pointer hover:opacity-95 transition-opacity select-none"
+          >
+            {headlineRole}
+          </motion.h1>
+        </AnimatePresence>
       </div>
 
-      {/* 2. Three-Column Narrative Sub-Bar */}
-      <div className="my-8 sm:my-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-10 text-xs sm:text-[13px] leading-relaxed text-[#D2D0C9] font-sans items-baseline border-t border-white/[0.08] pt-6">
+      {/* 2. Narrative Sub-Bar (Compact on Mobile to Prevent Excessive Page Length) */}
+      <div className="my-4 sm:my-10 grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-10 text-xs sm:text-[13px] leading-relaxed text-[#D2D0C9] font-sans items-baseline border-t border-white/[0.08] pt-3 sm:pt-6">
         <div className="md:col-span-5 lg:col-span-4">
           <p className="font-light">
             I&apos;m currently orchestrating digital systems &amp; high-conversion web platforms for leading tech companies and venture-backed ventures across the globe.
           </p>
         </div>
 
-        <div className="md:col-span-5 lg:col-span-5">
+        <div className="hidden sm:block md:col-span-5 lg:col-span-5">
           <p className="font-light">
             I&apos;m a passionate designer and engineer with many years of experience who uses research, data, and thoughtful design to create delightful products that scale.
           </p>
         </div>
 
-        <div className="md:col-span-2 lg:col-span-3 flex md:justify-end">
+        <div className="md:col-span-2 lg:col-span-3 flex justify-start sm:justify-end pt-1 sm:pt-0">
           <button
             onClick={scrollToContact}
             className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold tracking-wide text-white uppercase underline underline-offset-8 hover:text-[#38C7B8] transition-colors"
@@ -66,7 +80,7 @@ export function EditorialHero() {
       </div>
 
       {/* 3. Bottom Stadium Grid Visual Container with Portrait & Colorful Stickers */}
-      <div className="relative w-full min-h-[440px] sm:min-h-[580px] lg:min-h-[640px] rounded-2xl sm:rounded-l-3xl sm:rounded-r-3xl md:rounded-l-2xl md:rounded-r-[260px] lg:rounded-r-[320px] overflow-hidden border border-black/10 bg-[#F1EFEA] shadow-2xl flex items-end justify-center">
+      <div className="relative w-full min-h-[380px] sm:min-h-[580px] lg:min-h-[640px] rounded-2xl sm:rounded-l-3xl sm:rounded-r-3xl md:rounded-l-2xl md:rounded-r-[260px] lg:rounded-r-[320px] overflow-hidden border border-black/10 bg-[#F1EFEA] shadow-2xl flex items-end justify-center">
         
         {/* Architectural Grid Lines Matting (Animated Black Lines Moving Continuously to the Right) */}
         <div

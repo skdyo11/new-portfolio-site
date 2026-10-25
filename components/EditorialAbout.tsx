@@ -22,7 +22,7 @@ export function EditorialAbout() {
   };
 
   return (
-    <section id="about" className="py-16 sm:py-24 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto w-full select-none">
+    <section id="about" className="py-10 sm:py-24 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto w-full select-none">
       {/* Cobalt Blue Blueprint Grid Container with Scroll Popup */}
       <motion.div
         initial={{ opacity: 0, y: 40, scale: 0.97 }}
@@ -142,21 +142,21 @@ export function EditorialAbout() {
           </p>
         </div>
 
-        {/* Bottom 4 Feature Cards (Exact 4 Cards from Image 2) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-white/15">
+        {/* Bottom 4 Feature Cards (Compact 2x2 Grid on Mobile to Reduce Scroll Height) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 pt-4 sm:pt-6 border-t border-white/15">
           {/* CARD 1: Orange */}
-          <div className="p-5 rounded-2xl bg-[#FF4500] text-white flex flex-col justify-between min-h-[210px] shadow-lg transition-transform hover:-translate-y-1 duration-200">
+          <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#FF4500] text-white flex flex-col justify-between min-h-[145px] sm:min-h-[210px] shadow-lg transition-transform hover:-translate-y-1 duration-200">
             <div>
-              <h3 className="font-syne font-bold text-base sm:text-lg uppercase tracking-tight">
+              <h3 className="font-syne font-bold text-xs sm:text-lg uppercase tracking-tight">
                 STEAL MY STACK
               </h3>
-              <p className="text-[11px] text-white/90 font-light mt-1.5 leading-relaxed">
-                Production-ready architectures. Zero boilerplate fluff, pure velocity.
+              <p className="text-[10px] sm:text-[11px] text-white/90 font-light mt-1 sm:mt-1.5 leading-relaxed line-clamp-2 sm:line-clamp-none">
+                Production-ready architectures. Pure velocity.
               </p>
             </div>
-            <div className="flex flex-wrap gap-1.5 pt-3">
-              {["Next.js", "TypeScript", "Tailwind", "V8 Edge"].map((t) => (
-                <span key={t} className="px-2 py-0.5 rounded bg-black/30 text-[9px] font-mono">
+            <div className="flex flex-wrap gap-1 pt-2 sm:pt-3">
+              {["Next.js", "TypeScript", "Tailwind"].map((t) => (
+                <span key={t} className="px-1.5 py-0.5 rounded bg-black/30 text-[8px] sm:text-[9px] font-mono">
                   {t}
                 </span>
               ))}
@@ -164,60 +164,60 @@ export function EditorialAbout() {
           </div>
 
           {/* CARD 2: Peach / Sand */}
-          <div className="p-5 rounded-2xl bg-[#F9D6C4] text-[#1E293B] flex flex-col justify-between min-h-[210px] shadow-lg transition-transform hover:-translate-y-1 duration-200">
+          <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#F9D6C4] text-[#1E293B] flex flex-col justify-between min-h-[145px] sm:min-h-[210px] shadow-lg transition-transform hover:-translate-y-1 duration-200">
             <div>
-              <h3 className="font-syne font-bold text-base sm:text-lg uppercase tracking-tight text-[#0F172A]">
-                EPIC ARCHITECTURE
+              <h3 className="font-syne font-bold text-xs sm:text-lg uppercase tracking-tight text-[#0F172A]">
+                ARCHITECTURE
               </h3>
-              <p className="text-[11px] text-[#334155] font-light mt-1.5 leading-relaxed">
-                Cloudflare V8 edge isolates, Next.js ISR, and real-time Firestore shards.
+              <p className="text-[10px] sm:text-[11px] text-[#334155] font-light mt-1 sm:mt-1.5 leading-relaxed line-clamp-2 sm:line-clamp-none">
+                Cloudflare V8 isolates, Next.js ISR, and Firestore shards.
               </p>
             </div>
-            <div className="flex items-center gap-2 pt-3">
-              <span className="px-2.5 py-1 rounded bg-white text-[#0A3482] text-[10px] font-mono font-bold shadow-sm">
-                ⚛ React 18
+            <div className="flex items-center gap-1.5 pt-2 sm:pt-3">
+              <span className="px-2 py-0.5 rounded bg-white text-[#0A3482] text-[9px] sm:text-[10px] font-mono font-bold shadow-sm">
+                ⚛ React
               </span>
-              <span className="px-2.5 py-1 rounded bg-[#0F172A] text-white text-[10px] font-mono font-bold shadow-sm">
-                ▲ Next.js 14
+              <span className="px-2 py-0.5 rounded bg-[#0F172A] text-white text-[9px] sm:text-[10px] font-mono font-bold shadow-sm">
+                ▲ Next
               </span>
             </div>
           </div>
 
           {/* CARD 3: Electric Purple */}
-          <div className="p-5 rounded-2xl bg-[#6D28D9] text-white flex flex-col justify-between min-h-[210px] shadow-lg transition-transform hover:-translate-y-1 duration-200">
+          <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#6D28D9] text-white flex flex-col justify-between min-h-[145px] sm:min-h-[210px] shadow-lg transition-transform hover:-translate-y-1 duration-200">
             <div>
-              <h3 className="font-syne font-bold text-base sm:text-lg uppercase tracking-tight">
-                SHARE THE CRAFT
+              <h3 className="font-syne font-bold text-xs sm:text-lg uppercase tracking-tight">
+                THE CRAFT
               </h3>
-              <p className="text-[11px] text-white/90 font-light mt-1.5 leading-relaxed">
-                Kinetic motion and resilient distributed systems for global teams.
+              <p className="text-[10px] sm:text-[11px] text-white/90 font-light mt-1 sm:mt-1.5 leading-relaxed line-clamp-2 sm:line-clamp-none">
+                Kinetic motion and resilient distributed systems.
               </p>
             </div>
-            <div className="flex items-center gap-2.5 pt-3">
-              <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-white shadow-md">
+            <div className="flex items-center gap-2 pt-2 sm:pt-3">
+              <div className="relative h-6 w-6 sm:h-10 sm:w-10 rounded-full overflow-hidden border border-white shadow-md shrink-0">
                 <Image src="/saif.jpg" alt="Saif Ali" fill className="object-cover object-top" />
               </div>
-              <span className="text-[10px] font-mono text-purple-200">
-                Lahore ➔ Worldwide
+              <span className="text-[8px] sm:text-[10px] font-mono text-purple-200 truncate">
+                Worldwide
               </span>
             </div>
           </div>
 
           {/* CARD 4: Mint / Cyan */}
-          <div className="p-5 rounded-2xl bg-[#D9F2F7] text-[#0F172A] flex flex-col justify-between min-h-[210px] shadow-lg transition-transform hover:-translate-y-1 duration-200">
+          <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-[#D9F2F7] text-[#0F172A] flex flex-col justify-between min-h-[145px] sm:min-h-[210px] shadow-lg transition-transform hover:-translate-y-1 duration-200">
             <div>
-              <h3 className="font-syne font-bold text-base sm:text-lg uppercase tracking-tight text-[#0F172A]">
-                HIGH-IMPACT GIGS
+              <h3 className="font-syne font-bold text-xs sm:text-lg uppercase tracking-tight text-[#0F172A]">
+                HIGH-IMPACT
               </h3>
-              <p className="text-[11px] text-[#334155] font-light mt-1.5 leading-relaxed">
-                Direct venture collaboration. Less committee meetings, more shipping.
+              <p className="text-[10px] sm:text-[11px] text-[#334155] font-light mt-1 sm:mt-1.5 leading-relaxed line-clamp-2 sm:line-clamp-none">
+                Direct venture collaboration. Less meetings, more shipping.
               </p>
             </div>
             <button
               onClick={handleInitiateChat}
-              className="w-full py-2 px-3 rounded-xl bg-[#0A3482] text-white text-[11px] font-mono font-semibold flex items-center justify-between hover:bg-blue-900 transition-colors shadow-sm cursor-pointer"
+              className="w-full py-1.5 px-2.5 rounded-lg sm:rounded-xl bg-[#0A3482] text-white text-[9px] sm:text-[11px] font-mono font-semibold flex items-center justify-between hover:bg-blue-900 transition-colors shadow-sm cursor-pointer"
             >
-              <span>Available for Q4</span>
+              <span>Available</span>
               <span>➔</span>
             </button>
           </div>

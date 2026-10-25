@@ -30,13 +30,13 @@ export function EditorialPhilosophy() {
   ];
 
   return (
-    <section id="ethos" className="py-20 sm:py-28 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto w-full border-t border-white/[0.1] select-none bg-[#141518]">
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/[0.1] pb-6 mb-12 gap-6">
+    <section id="ethos" className="py-10 sm:py-28 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto w-full border-t border-white/[0.1] select-none bg-[#141518]">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/[0.1] pb-4 sm:pb-6 mb-6 sm:mb-12 gap-4 sm:gap-6">
         <div>
           <span className="text-xs font-mono tracking-widest uppercase text-neutral-400">
             02 / CORE DISCIPLINES
           </span>
-          <h2 className="font-serif italic text-3xl sm:text-5xl text-white mt-1.5 tracking-tight font-normal">
+          <h2 className="font-serif italic text-2xl sm:text-5xl text-white mt-1 sm:mt-1.5 tracking-tight font-normal">
             Philosophy &amp; Execution
           </h2>
         </div>
@@ -46,7 +46,7 @@ export function EditorialPhilosophy() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         {disciplines.map((d, i) => (
           <motion.div
             key={d.num}
@@ -55,7 +55,7 @@ export function EditorialPhilosophy() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="p-6 sm:p-7 rounded-3xl border border-white/15 bg-[#1C1E26] space-y-4 hover:border-white/30 transition-all duration-300 shadow-[0_15px_45px_rgba(0,0,0,0.6),0_0_20px_rgba(255,255,255,0.03)] flex flex-col justify-between"
+            className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl border border-white/15 bg-[#1C1E26] space-y-3 sm:space-y-4 hover:border-white/30 transition-all duration-300 shadow-[0_15px_45px_rgba(0,0,0,0.6),0_0_20px_rgba(255,255,255,0.03)] flex flex-col justify-between"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 text-xs font-mono text-neutral-400">

@@ -114,30 +114,30 @@ export function EditorialFooter() {
   const sliderPercentage = ((budgetValue - minBudget) / (maxBudget - minBudget)) * 100;
 
   return (
-    <footer id="contact" className="border-t border-white/[0.1] bg-[#141518] text-neutral-300 font-sans select-none py-20 sm:py-28 px-4 sm:px-8 lg:px-12">
-      <div className="max-w-5xl mx-auto space-y-16">
+    <footer id="contact" className="border-t border-white/[0.1] bg-[#141518] text-neutral-300 font-sans select-none py-12 sm:py-28 px-4 sm:px-8 lg:px-12">
+      <div className="max-w-5xl mx-auto space-y-8 sm:space-y-16">
         {/* Engagement Header */}
-        <div className="text-center space-y-4 max-w-2xl mx-auto">
+        <div className="text-center space-y-3 sm:space-y-4 max-w-2xl mx-auto">
           <span className="text-xs font-mono tracking-widest uppercase text-amber-400 font-semibold">
             02 / INITIATE ENGAGEMENT
           </span>
-          <h2 className="font-serif italic text-4xl sm:text-6xl text-white tracking-tight font-normal">
+          <h2 className="font-serif italic text-3xl sm:text-6xl text-white tracking-tight font-normal">
             Let&apos;s build something exceptional.
           </h2>
-          <p className="text-sm text-neutral-400 font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
             Accepting commissions for high-throughput platforms and bespoke digital experiences.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-3">
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
             <MagneticButton
               onClick={handleCopyEmail}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-semibold shadow-lg cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-semibold shadow-lg cursor-pointer"
             >
               <span>saifalii.dev@gmail.com</span>
               {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5 text-neutral-500" />}
             </MagneticButton>
-            <span className="text-xs font-mono text-neutral-400">
-              {copied ? "Copied to clipboard" : "Click to copy direct inbox"}
+            <span className="text-[11px] sm:text-xs font-mono text-neutral-400">
+              {copied ? "Copied to clipboard" : "Click to copy inbox"}
             </span>
           </div>
         </div>
@@ -148,7 +148,7 @@ export function EditorialFooter() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-3xl border border-yellow-500/30 bg-[#1C1E26] p-6 sm:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.8),0_0_35px_rgba(234,179,8,0.1)] ring-1 ring-white/10 max-w-3xl mx-auto"
+          className="relative rounded-2xl sm:rounded-3xl border border-yellow-500/30 bg-[#1C1E26] p-4 sm:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.8),0_0_35px_rgba(234,179,8,0.1)] ring-1 ring-white/10 max-w-3xl mx-auto"
         >
           {/* Form Header */}
           <div className="flex flex-wrap items-center justify-between border-b border-white/[0.1] pb-4 mb-6 gap-3">

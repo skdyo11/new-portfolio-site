@@ -82,15 +82,15 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
   };
 
   return (
-    <section id="work" className="py-20 sm:py-28 px-4 sm:px-8 lg:px-12 w-full select-none bg-[#141518]">
-      <div className="max-w-6xl mx-auto w-full space-y-16">
+    <section id="work" className="py-12 sm:py-28 px-4 sm:px-8 lg:px-12 w-full select-none bg-[#141518]">
+      <div className="max-w-6xl mx-auto w-full space-y-8 sm:space-y-16">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/[0.1] pb-6 gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/[0.1] pb-4 sm:pb-6 gap-4 sm:gap-6">
           <div>
             <span className="text-xs font-mono tracking-widest uppercase text-neutral-400 font-semibold">
               01 / SELECTED WORKS (2024 — 2026)
             </span>
-            <h2 className="font-syne font-extrabold text-3xl sm:text-5xl text-white mt-2 tracking-tight">
+            <h2 className="font-syne font-extrabold text-2xl sm:text-5xl text-white mt-1 sm:mt-2 tracking-tight">
               Production Platforms &amp; Systems.
             </h2>
           </div>
@@ -100,8 +100,8 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
           </p>
         </div>
 
-        {/* Project Pods (with Framer layoutId + Hover Spring Animation) */}
-        <div className="space-y-20 sm:space-y-28">
+        {/* Project Pods (Tighter Mobile Spacing to Cut Scrolling Distance) */}
+        <div className="space-y-8 sm:space-y-24">
           {PROJECTS.map((project, idx) => {
             const currentMode = activeModes[project.id] || "simulator";
             const theme = getTheme(project.id);
@@ -133,14 +133,14 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
                 </div>
 
                 {/* Pod Top Bar */}
-                <div className="flex items-center justify-between px-6 sm:px-8 py-4 border-b border-white/[0.1] bg-white/[0.02]">
+                <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-4 border-b border-white/[0.1] bg-white/[0.02]">
                   {/* Left: Index & Name */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <span className="font-mono text-xs text-neutral-400 font-bold">
                       [0{idx + 1}]
                     </span>
                     <span className="h-3 w-px bg-white/20" />
-                    <span className="font-syne font-bold text-sm tracking-wider uppercase text-white">
+                    <span className="font-syne font-bold text-xs sm:text-sm tracking-wider uppercase text-white truncate max-w-[140px] sm:max-w-none">
                       {project.name}
                     </span>
                     <span className={`hidden sm:inline-block px-2.5 py-0.5 rounded-full border text-[10px] font-mono ${theme.badgeBorder}`}>
@@ -148,14 +148,14 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
                     </span>
                   </div>
 
-                  {/* Right: Magnetic Visit Site Button (User Request 6) */}
+                  {/* Right: Magnetic Visit Site Button */}
                   {project.externalLink ? (
                     <MagneticButton
                       onClick={() => {
                         playSound("click");
                         window.open(project.externalLink, "_blank", "noopener,noreferrer");
                       }}
-                      className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-semibold shadow-md group/btn cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded-full bg-white text-black hover:bg-neutral-200 text-xs font-semibold shadow-md group/btn cursor-pointer"
                     >
                       <span>Visit Site</span>
                       <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -166,10 +166,10 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
                 {/* Pod Body: Balanced Split Layout */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/[0.1]">
                   {/* Left Column: Monograph Headline & Technical Specs */}
-                  <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6">
-                    <div className="space-y-4">
+                  <div className="lg:col-span-5 p-4 sm:p-8 flex flex-col justify-between space-y-4 sm:space-y-6">
+                    <div className="space-y-3 sm:space-y-4">
                       {/* Bold Headline */}
-                      <h3 className="font-syne font-bold text-xl sm:text-2xl text-white tracking-tight leading-snug">
+                      <h3 className="font-syne font-bold text-lg sm:text-2xl text-white tracking-tight leading-snug">
                         {project.headline}
                       </h3>
 
@@ -179,13 +179,13 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
                       </p>
 
                       {/* Verified Metrics */}
-                      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-white/[0.08]">
+                      <div className="grid grid-cols-3 gap-1.5 sm:gap-2 pt-2 border-t border-white/[0.08]">
                         {project.stats.map((s) => (
-                          <div key={s.label} className="p-2.5 rounded-xl bg-black/40 border border-white/[0.08]">
-                            <div className="text-[9px] font-mono text-neutral-400 uppercase truncate">
+                          <div key={s.label} className="p-2 sm:p-2.5 rounded-xl bg-black/40 border border-white/[0.08]">
+                            <div className="text-[8.5px] sm:text-[9px] font-mono text-neutral-400 uppercase truncate">
                               {s.label}
                             </div>
-                            <div className="text-xs sm:text-sm font-bold text-white mt-0.5">
+                            <div className="text-xs sm:text-sm font-bold text-white mt-0.5 truncate">
                               {s.value}
                             </div>
                           </div>
@@ -193,15 +193,15 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
                       </div>
 
                       {/* Core Stack Badges */}
-                      <div className="pt-2">
-                        <div className="text-[10px] font-mono text-neutral-400 uppercase mb-2">
+                      <div className="pt-1 sm:pt-2">
+                        <div className="text-[9px] sm:text-[10px] font-mono text-neutral-400 uppercase mb-1.5 sm:mb-2">
                           Core Architecture:
                         </div>
-                        <div className="flex flex-wrap gap-1.5">
+                        <div className="flex flex-wrap gap-1 sm:gap-1.5">
                           {project.tags.slice(0, 4).map((tag) => (
                             <span
                               key={tag}
-                              className="px-2 py-0.5 rounded-md border border-white/10 bg-white/[0.02] text-[10px] font-mono text-neutral-300"
+                              className="px-2 py-0.5 rounded-md border border-white/10 bg-white/[0.02] text-[9px] sm:text-[10px] font-mono text-neutral-300"
                             >
                               {tag}
                             </span>
@@ -211,32 +211,32 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
                     </div>
 
                     {/* Mode Switcher: Interactive Demo vs Pipeline */}
-                    <div className="pt-4 border-t border-white/[0.08] space-y-2">
-                      <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
+                    <div className="pt-3 sm:pt-4 border-t border-white/[0.08] space-y-2">
+                      <div className="text-[9px] sm:text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
                         Stage View:
                       </div>
                       <div className="grid grid-cols-2 gap-2 text-xs font-mono">
                         <button
                           onClick={() => toggleMode(project.id, "simulator")}
-                          className={`flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border transition-all ${
+                          className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl border transition-all text-xs ${
                             currentMode === "simulator"
                               ? "bg-white text-black font-bold border-white shadow-sm"
                               : "border-white/15 bg-white/[0.03] text-neutral-400 hover:text-white"
                           }`}
                         >
-                          <Play className="h-3.5 w-3.5 fill-current" />
+                          <Play className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-current" />
                           <span>Live Sandbox</span>
                         </button>
 
                         <button
                           onClick={() => toggleMode(project.id, "pipeline")}
-                          className={`flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border transition-all ${
+                          className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl border transition-all text-xs ${
                             currentMode === "pipeline"
                               ? "bg-white text-black font-bold border-white shadow-sm"
                               : "border-white/15 bg-white/[0.03] text-neutral-400 hover:text-white"
                           }`}
                         >
-                          <Layers className="h-3.5 w-3.5" />
+                          <Layers className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                           <span>Pipeline Specs</span>
                         </button>
                       </div>
@@ -244,7 +244,7 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
                   </div>
 
                   {/* Right Column: Live Interactive Stage (High-Fidelity, Zero-Lag) */}
-                  <div className="lg:col-span-7 p-4 sm:p-6 bg-black/50 flex flex-col justify-center min-h-[460px]">
+                  <div className="lg:col-span-7 p-3 sm:p-6 bg-black/50 flex flex-col justify-center min-h-[300px] sm:min-h-[460px]">
                     {currentMode === "simulator" ? (
                       /* Live Interactive Simulator */
                       <div className="h-full w-full rounded-2xl overflow-hidden border border-white/15 shadow-xl">
