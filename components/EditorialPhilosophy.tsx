@@ -50,10 +50,10 @@ export function EditorialPhilosophy() {
         {disciplines.map((d, i) => (
           <motion.div
             key={d.num}
-            initial={{ opacity: 0, y: 35, scale: 0.96 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
             className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl border border-white/15 bg-[#1C1E26] space-y-3 sm:space-y-4 hover:border-white/30 transition-all duration-300 shadow-[0_15px_45px_rgba(0,0,0,0.6),0_0_20px_rgba(255,255,255,0.03)] flex flex-col justify-between"
           >

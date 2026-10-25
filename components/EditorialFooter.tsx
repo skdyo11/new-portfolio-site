@@ -144,10 +144,10 @@ export function EditorialFooter() {
 
         {/* Focused High-Contrast Interactive Inquiry Form with Scroll Popup */}
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="relative rounded-2xl sm:rounded-3xl border border-yellow-500/30 bg-[#1C1E26] p-4 sm:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.8),0_0_35px_rgba(234,179,8,0.1)] ring-1 ring-white/10 max-w-3xl mx-auto"
         >
           {/* Form Header */}

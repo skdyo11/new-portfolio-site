@@ -111,10 +111,10 @@ export function ProjectMonographShowcase({ onOpenDrawer }: ShowcaseProps) {
                 key={project.id}
                 id={project.id}
                 layoutId={`project-card-${project.id}`}
-                initial={{ opacity: 0, y: 50, scale: 0.96 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-70px" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -5, transition: { duration: 0.25 } }}
                 className={`relative rounded-3xl border ${theme.cardBorder} bg-[#181A22] overflow-hidden transition-all duration-300 ring-1 ring-white/10`}
               >

@@ -25,11 +25,11 @@ export function EditorialAbout() {
     <section id="about" className="py-10 sm:py-24 px-4 sm:px-8 lg:px-12 max-w-6xl mx-auto w-full select-none">
       {/* Cobalt Blue Blueprint Grid Container with Scroll Popup */}
       <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.97 }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="relative rounded-[28px] sm:rounded-[36px] overflow-hidden bg-[#0A3482] text-white p-6 sm:p-10 shadow-2xl border border-blue-400/25 ring-1 ring-white/10"
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="relative rounded-[24px] sm:rounded-[36px] overflow-hidden bg-[#0A3482] text-white p-4 sm:p-10 shadow-2xl border border-blue-400/25 ring-1 ring-white/10"
         style={{
           backgroundImage: `
             linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
@@ -105,8 +105,8 @@ export function EditorialAbout() {
           </div>
 
           {/* Center Giant Bold Typography: WILD CREATIVE CODE */}
-          <div className="text-center relative py-6 sm:py-8">
-            <h2 className="font-syne font-extrabold uppercase tracking-tight text-white text-5xl sm:text-7xl lg:text-8xl leading-[0.9] drop-shadow-md">
+          <div className="text-center relative py-5 sm:py-8 overflow-hidden max-w-full">
+            <h2 className="font-syne font-extrabold uppercase tracking-tight text-white text-[9.5vw] sm:text-7xl lg:text-8xl leading-[0.9] drop-shadow-md break-words">
               <span className="block">WILD</span>
               <span className="block">CREATIVE</span>
               <span className="block">CODE</span>
@@ -116,9 +116,9 @@ export function EditorialAbout() {
             <div
               style={{ transform: "rotate(15deg)" }}
               onClick={() => playSound("click")}
-              className="absolute right-2 sm:right-12 lg:right-20 bottom-0 z-20 w-16 h-16 sm:w-22 sm:h-22 rounded-full bg-[#FF5500] text-white shadow-xl flex items-center justify-center cursor-pointer transition-transform hover:scale-105 active:scale-95 duration-200"
+              className="absolute right-0 sm:right-12 lg:right-20 bottom-0 z-20 w-12 h-12 sm:w-22 sm:h-22 rounded-full bg-[#FF5500] text-white shadow-xl flex items-center justify-center cursor-pointer transition-transform hover:scale-105 active:scale-95 duration-200"
             >
-              <span className="text-lg sm:text-2xl font-black">⚡</span>
+              <span className="text-base sm:text-2xl font-black">⚡</span>
               <svg
                 className="absolute inset-0 w-full h-full pointer-events-none animate-spin-slow"
                 viewBox="0 0 100 100"
