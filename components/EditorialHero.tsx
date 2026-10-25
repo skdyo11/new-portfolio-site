@@ -30,11 +30,11 @@ export function EditorialHero() {
     <section className="relative min-h-screen bg-[#141518] text-[#ECEBE6] pt-28 sm:pt-32 pb-16 px-4 sm:px-8 lg:px-12 flex flex-col justify-between overflow-hidden select-none">
       
       {/* 1. Giant Condensed Typography Headline */}
-      <div className="w-full pt-4 sm:pt-8 text-center sm:text-left">
+      <div className="w-full pt-2 sm:pt-8 text-center sm:text-left">
         <h1
           onClick={toggleRole}
           title="Click to toggle title"
-          className="font-anton uppercase tracking-tight text-[#ECEBE6] text-[13.5vw] sm:text-[13vw] leading-[0.88] cursor-pointer hover:opacity-95 transition-opacity"
+          className="font-anton uppercase tracking-tight text-[#ECEBE6] text-[11.5vw] sm:text-[13vw] leading-[0.9] sm:leading-[0.88] cursor-pointer hover:opacity-95 transition-opacity select-none"
         >
           {headlineRole}
         </h1>
@@ -66,7 +66,7 @@ export function EditorialHero() {
       </div>
 
       {/* 3. Bottom Stadium Grid Visual Container with Portrait & Colorful Stickers */}
-      <div className="relative w-full min-h-[460px] sm:min-h-[580px] lg:min-h-[640px] rounded-l-3xl rounded-r-3xl md:rounded-l-2xl md:rounded-r-[260px] lg:rounded-r-[320px] overflow-hidden border border-black/10 bg-[#F1EFEA] shadow-2xl flex items-end justify-center">
+      <div className="relative w-full min-h-[440px] sm:min-h-[580px] lg:min-h-[640px] rounded-2xl sm:rounded-l-3xl sm:rounded-r-3xl md:rounded-l-2xl md:rounded-r-[260px] lg:rounded-r-[320px] overflow-hidden border border-black/10 bg-[#F1EFEA] shadow-2xl flex items-end justify-center">
         
         {/* Architectural Grid Lines Matting (Animated Black Lines Moving Continuously to the Right) */}
         <div
@@ -80,199 +80,156 @@ export function EditorialHero() {
           }}
         />
 
-        {/* Center Portrait of Saif Ali (With Rounded Corners & Organic Breathing Animation) */}
-        <motion.div
-          animate={{
-            y: [0, -8, 0],
-            scale: [1, 1.014, 1],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="relative z-10 w-[280px] sm:w-[380px] md:w-[460px] lg:w-[500px] aspect-[4/5] max-h-[82%] pointer-events-none rounded-3xl overflow-hidden shadow-2xl"
-        >
+        {/* Center Portrait of Saif Ali (Hardware-Accelerated Compositor Breathing Animation) */}
+        <div className="animate-portrait-breathe relative z-10 w-[240px] sm:w-[380px] md:w-[460px] lg:w-[500px] aspect-[4/5] max-h-[88%] pointer-events-none rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
           <Image
             src="/saif.jpg"
             alt="Saif Ali"
             fill
             priority
-            className="object-cover object-top filter contrast-[1.12] brightness-[0.88] grayscale-[30%] rounded-3xl"
+            sizes="(max-width: 640px) 260px, (max-width: 1024px) 460px, 500px"
+            className="object-cover object-top filter contrast-[1.12] brightness-[0.88] grayscale-[30%] rounded-2xl sm:rounded-3xl"
           />
           {/* Subtle bottom fade matching grid background tone */}
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F1EFEA] via-[#F1EFEA]/40 to-transparent rounded-b-3xl" />
-        </motion.div>
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F1EFEA] via-[#F1EFEA]/40 to-transparent rounded-b-2xl sm:rounded-b-3xl" />
+        </div>
 
         {/* ========================================================= */}
-        {/* TACTILE GRAPHIC STICKERS (With Floating/Breathing Motion & Hover Physics) */}
+        {/* TACTILE GRAPHIC STICKERS (Compositor Float + Natural Mobile Docking) */}
         {/* ========================================================= */}
 
         {/* STICKER 1: Top-Left Teal Circle Sticker (DESIGN STRATEGY) */}
-        <motion.div
-          className="absolute top-6 sm:top-12 left-4 sm:left-14 lg:left-24 z-20 pointer-events-auto"
-          animate={{ y: [0, -10, 0], rotate: [-1, 2, -1] }}
-          transition={{ duration: 4.6, repeat: Infinity, ease: "easeInOut" }}
-        >
+        <div className="animate-float-1 absolute top-2 sm:top-12 left-2 sm:left-14 lg:left-24 z-20 pointer-events-auto">
           <motion.div
-            initial={{ scale: 0, opacity: 0, rotate: -15 }}
-            animate={{ scale: 1, opacity: 1, rotate: -3 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 280, damping: 20, delay: 0.1 }}
             whileHover={{ scale: 1.15, rotate: 0, zIndex: 40, transition: { type: "spring", stiffness: 400, damping: 15 } }}
             whileTap={{ scale: 0.95 }}
             onClick={() => playSound("click")}
-            className="w-32 h-32 sm:w-44 sm:h-44 rounded-full bg-[#38C7B8] text-[#0A0A0A] shadow-2xl flex flex-col items-center justify-center p-4 text-center cursor-pointer select-none"
+            className="w-24 h-24 sm:w-44 sm:h-44 rounded-full bg-[#38C7B8] text-[#0A0A0A] shadow-xl sm:shadow-2xl flex flex-col items-center justify-center p-2 sm:p-4 text-center cursor-pointer select-none"
           >
-            <div className="flex items-center gap-1 mb-1.5 opacity-90">
-              <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-l-full bg-black" />
-              <span className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-r-full bg-black" />
+            <div className="flex items-center gap-0.5 sm:gap-1 mb-0.5 sm:mb-1.5 opacity-90">
+              <span className="w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-l-full bg-black" />
+              <span className="w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-r-full bg-black" />
             </div>
 
-            <span className="font-syne font-extrabold text-sm sm:text-lg leading-tight uppercase tracking-tight">
+            <span className="font-syne font-extrabold text-[11px] sm:text-lg leading-tight uppercase tracking-tight">
               DESIGN STRATEGY
             </span>
 
-            <span className="text-[8px] sm:text-[10px] font-sans font-semibold uppercase tracking-wider leading-tight text-neutral-800 mt-1 max-w-[110px] sm:max-w-[130px]">
+            <span className="hidden sm:block text-[8px] sm:text-[10px] font-sans font-semibold uppercase tracking-wider leading-tight text-neutral-800 mt-1 max-w-[130px]">
               ALIGNING YOUR BUSINESS &amp; USER NEEDS
             </span>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* STICKER 2: Far-Left Yellow Pill Sticker (E-COMM. www. * EXPERIENCES) */}
-        <motion.div
-          className="absolute bottom-32 sm:bottom-40 left-2 sm:left-6 lg:left-10 z-20 pointer-events-auto"
-          animate={{ y: [0, 9, 0], x: [0, 4, 0], rotate: [1, -2, 1] }}
-          transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-        >
+        <div className="animate-float-2 absolute bottom-20 sm:bottom-40 left-1.5 sm:left-6 lg:left-10 z-20 pointer-events-auto">
           <motion.div
-            initial={{ scale: 0, opacity: 0, rotate: -20 }}
-            animate={{ scale: 1, opacity: 1, rotate: -7 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 280, damping: 20, delay: 0.2 }}
             whileHover={{ scale: 1.15, rotate: 0, zIndex: 40, transition: { type: "spring", stiffness: 400, damping: 15 } }}
             whileTap={{ scale: 0.95 }}
             onClick={() => playSound("click")}
-            className="rounded-2xl bg-[#F8C822] text-[#0A0A0A] px-4 sm:px-5 py-3 shadow-2xl cursor-pointer select-none"
+            className="rounded-xl sm:rounded-2xl bg-[#F8C822] text-[#0A0A0A] px-2.5 py-1.5 sm:px-5 sm:py-3 shadow-xl sm:shadow-2xl cursor-pointer select-none"
           >
-            <div className="flex items-center gap-1.5 font-sans font-bold text-xs sm:text-sm tracking-tight">
+            <div className="flex items-center gap-1 sm:gap-1.5 font-sans font-bold text-[10px] sm:text-sm tracking-tight">
               <span>E—COMM.</span>
-              <span className="px-2 py-0.5 rounded-full bg-black text-[#F8C822] font-mono text-[10px]">
-                www. ✦
+              <span className="px-1 sm:px-2 py-0.5 rounded-full bg-black text-[#F8C822] font-mono text-[8px] sm:text-[10px]">
+                ✦
               </span>
             </div>
 
-            <div className="flex items-center gap-1.5 font-syne font-extrabold text-sm sm:text-base tracking-tight uppercase mt-0.5">
-              <span className="h-3.5 w-3.5 rounded-full border-2 border-black flex items-center justify-center text-[8px] font-black">
-                ●
-              </span>
+            <div className="flex items-center gap-1 sm:gap-1.5 font-syne font-extrabold text-[10px] sm:text-base tracking-tight uppercase mt-0.5">
               <span>EXPERIENCES</span>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* STICKER 3: Bottom-Left Orange Angled Badge (MOTION & INTERACTION ➔ DESIGN) */}
-        <motion.div
-          className="absolute bottom-6 sm:bottom-10 left-10 sm:left-24 lg:left-36 z-20 pointer-events-auto"
-          animate={{ y: [0, -8, 0], rotate: [-1, 2, -1] }}
-          transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
-        >
+        <div className="animate-float-3 absolute bottom-2 sm:bottom-10 left-2 sm:left-24 lg:left-36 z-20 pointer-events-auto">
           <motion.div
-            initial={{ scale: 0, opacity: 0, rotate: -25 }}
-            animate={{ scale: 1, opacity: 1, rotate: -9 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 280, damping: 20, delay: 0.3 }}
             whileHover={{ scale: 1.15, rotate: 0, zIndex: 40, transition: { type: "spring", stiffness: 400, damping: 15 } }}
             whileTap={{ scale: 0.95 }}
             onClick={() => playSound("click")}
-            className="rounded-2xl bg-[#FF6326] text-white px-5 sm:px-6 py-3.5 shadow-2xl cursor-pointer select-none"
+            className="rounded-xl sm:rounded-2xl bg-[#FF6326] text-white px-3 py-2 sm:px-6 sm:py-3.5 shadow-xl sm:shadow-2xl cursor-pointer select-none"
           >
-            <div className="font-syne font-extrabold text-sm sm:text-base uppercase tracking-tight flex items-center gap-1.5">
-              <span>M</span>
-              <span className="tracking-widest font-mono text-xs opacity-90">≡≡</span>
-              <span>TION &amp;</span>
+            <div className="font-syne font-extrabold text-[10px] sm:text-base uppercase tracking-tight flex items-center gap-1 sm:gap-1.5">
+              <span>MOTION &amp;</span>
             </div>
 
-            <div className="font-syne font-extrabold text-sm sm:text-base uppercase tracking-tight">
+            <div className="font-syne font-extrabold text-[10px] sm:text-base uppercase tracking-tight">
               INTERACTION
             </div>
 
-            <div className="font-syne font-extrabold text-sm sm:text-base uppercase tracking-tight text-white/95 mt-0.5 flex items-center gap-1.5">
+            <div className="hidden sm:flex font-syne font-extrabold text-[10px] sm:text-base uppercase tracking-tight text-white/95 mt-0.5 items-center gap-1.5">
               <span>➔ DESIGN</span>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* STICKER 4: Upper-Right Hot Pink Notched Label (USER EXPER-IENCE DESIGN ©) */}
-        <motion.div
-          className="absolute top-16 sm:top-24 right-20 sm:right-48 lg:right-72 z-20 pointer-events-auto"
-          animate={{ y: [0, 8, 0], rotate: [-1, 2, -1], scale: [1, 1.025, 1] }}
-          transition={{ duration: 5.0, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-        >
+        <div className="animate-float-4 absolute top-2 sm:top-24 right-2 sm:right-48 lg:right-72 z-20 pointer-events-auto">
           <motion.div
-            initial={{ scale: 0, opacity: 0, rotate: 18 }}
-            animate={{ scale: 1, opacity: 1, rotate: 4 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 280, damping: 20, delay: 0.25 }}
             whileHover={{ scale: 1.15, rotate: 0, zIndex: 40, transition: { type: "spring", stiffness: 400, damping: 15 } }}
             whileTap={{ scale: 0.95 }}
             onClick={() => playSound("click")}
-            className="rounded-xl bg-[#FF2A6D] text-white px-4 sm:px-5 py-2.5 sm:py-3 shadow-2xl cursor-pointer select-none"
+            className="rounded-xl bg-[#FF2A6D] text-white px-2.5 py-1.5 sm:px-5 sm:py-3 shadow-xl sm:shadow-2xl cursor-pointer select-none"
           >
-            <div className="font-syne font-extrabold text-xs sm:text-sm uppercase tracking-tight leading-none">
-              USER
+            <div className="font-syne font-extrabold text-[10px] sm:text-sm uppercase tracking-tight leading-none">
+              USER EXP.
             </div>
 
-            <div className="font-syne font-extrabold text-xs sm:text-sm uppercase tracking-tight leading-none mt-1">
-              EXPER—IENCE
-            </div>
-
-            <div className="font-syne font-extrabold text-xs sm:text-sm uppercase tracking-tight leading-none mt-1 flex items-center gap-1">
+            <div className="font-syne font-extrabold text-[9px] sm:text-sm uppercase tracking-tight leading-none mt-0.5 sm:mt-1 flex items-center gap-1">
               <span>DESIGN</span>
-              <span className="text-[10px] font-mono">©</span>
+              <span className="text-[8px] sm:text-[10px] font-mono">©</span>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* STICKER 5: Mid-Right Mint Aqua Card (BRANDING & IDENTITY ©'26) */}
-        <motion.div
-          className="absolute bottom-28 sm:bottom-36 right-4 sm:right-16 lg:right-28 z-20 pointer-events-auto"
-          animate={{ y: [0, -9, 0], rotate: [1, -2, 1] }}
-          transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        >
+        <div className="animate-float-5 absolute bottom-20 sm:bottom-36 right-1.5 sm:right-16 lg:right-28 z-20 pointer-events-auto">
           <motion.div
-            initial={{ scale: 0, opacity: 0, rotate: 25 }}
-            animate={{ scale: 1, opacity: 1, rotate: 13 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 280, damping: 20, delay: 0.35 }}
             whileHover={{ scale: 1.15, rotate: 0, zIndex: 40, transition: { type: "spring", stiffness: 400, damping: 15 } }}
             whileTap={{ scale: 0.95 }}
             onClick={() => playSound("click")}
-            className="rounded-2xl bg-[#42E2B8] text-[#0A0A0A] p-4 sm:p-5 shadow-2xl cursor-pointer select-none max-w-[160px] sm:max-w-[190px]"
+            className="rounded-xl sm:rounded-2xl bg-[#42E2B8] text-[#0A0A0A] p-2.5 sm:p-5 shadow-xl sm:shadow-2xl cursor-pointer select-none max-w-[125px] sm:max-w-[190px]"
           >
-            <div className="font-syne font-extrabold text-sm sm:text-base leading-tight uppercase tracking-tight">
-              BRANDING &amp; IDENTITY
+            <div className="font-syne font-extrabold text-[10px] sm:text-base leading-tight uppercase tracking-tight">
+              BRANDING
             </div>
 
-            <div className="flex items-center justify-between mt-2 font-mono text-xs font-bold">
+            <div className="flex items-center justify-between mt-1 sm:mt-2 font-mono text-[9px] sm:text-xs font-bold">
               <span>©&apos;26</span>
-              <span className="text-base">✸</span>
+              <span className="text-xs sm:text-base">✸</span>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
         {/* STICKER 6: Bottom-Right Lime Circular Stamp (USABILITY TESTING) */}
-        <motion.div
-          className="absolute bottom-2 sm:bottom-6 right-16 sm:right-32 lg:right-44 z-20 pointer-events-auto"
-          animate={{ y: [0, 10, 0], rotate: [-2, 2, -2] }}
-          transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
-        >
+        <div className="animate-float-6 absolute bottom-2 sm:bottom-6 right-2 sm:right-32 lg:right-44 z-20 pointer-events-auto">
           <motion.div
-            initial={{ scale: 0, opacity: 0, rotate: 30 }}
-            animate={{ scale: 1, opacity: 1, rotate: 20 }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", stiffness: 280, damping: 20, delay: 0.4 }}
             whileHover={{ scale: 1.15, rotate: 0, zIndex: 40, transition: { type: "spring", stiffness: 400, damping: 15 } }}
             whileTap={{ scale: 0.95 }}
             onClick={() => playSound("click")}
-            className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#9DE538] text-[#0A0A0A] shadow-2xl flex items-center justify-center cursor-pointer select-none group"
+            className="w-20 h-20 sm:w-36 sm:h-36 rounded-full bg-[#9DE538] text-[#0A0A0A] shadow-xl sm:shadow-2xl flex items-center justify-center cursor-pointer select-none group"
           >
             <div className="relative z-10 flex items-center justify-center">
-              <Globe className="h-7 w-7 sm:h-9 sm:w-9 text-black group-hover:rotate-45 transition-transform duration-500" />
+              <Globe className="h-5 w-5 sm:h-9 sm:w-9 text-black group-hover:rotate-45 transition-transform duration-500" />
             </div>
 
             <svg
@@ -291,7 +248,7 @@ export function EditorialHero() {
               </text>
             </svg>
           </motion.div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

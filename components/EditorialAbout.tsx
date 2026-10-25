@@ -80,24 +80,27 @@ export function EditorialAbout() {
         </div>
 
         {/* Upper Hero Area with Two Stat Badges + Typography (Zero Text Overlap) */}
-        <div className="relative pt-8 pb-10">
-          {/* Top-Left Glass Metric Card */}
-          <div className="sm:absolute sm:top-6 sm:left-0 z-10 px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl bg-black/40 border border-white/15 backdrop-blur-md mb-4 sm:mb-0 min-w-[140px] shadow-lg">
-            <div className="font-syne font-extrabold text-xl sm:text-2xl text-white tracking-tight whitespace-nowrap">
-              4+
+        <div className="relative pt-6 sm:pt-8 pb-10">
+          {/* Mobile: Symmetrical 2-Column Metric Row | Desktop: Anchored Top Corners */}
+          <div className="flex sm:block items-center justify-between gap-3 mb-6 sm:mb-0">
+            {/* Left Glass Metric Card */}
+            <div className="sm:absolute sm:top-6 sm:left-0 z-10 px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-2xl bg-black/40 border border-white/15 backdrop-blur-md shadow-lg flex-1 sm:flex-initial text-left">
+              <div className="font-syne font-extrabold text-lg sm:text-2xl text-white tracking-tight whitespace-nowrap">
+                4+
+              </div>
+              <div className="text-[8.5px] sm:text-[10px] font-mono uppercase tracking-wider text-white/70 mt-0.5 whitespace-nowrap">
+                PRODUCTION APPS
+              </div>
             </div>
-            <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-white/70 mt-0.5 whitespace-nowrap">
-              PRODUCTION APPS
-            </div>
-          </div>
 
-          {/* Top-Right Glass Metric Card (Clean Sizing - 100% Fits Inside Card) */}
-          <div className="sm:absolute sm:top-6 sm:right-0 z-10 px-4 sm:px-5 py-3 sm:py-3.5 rounded-2xl bg-black/40 border border-white/15 backdrop-blur-md mb-4 sm:mb-0 min-w-[160px] sm:min-w-[175px] text-right shadow-lg ml-auto">
-            <div className="font-syne font-extrabold text-xl sm:text-2xl text-white tracking-tight whitespace-nowrap">
-              99.98%
-            </div>
-            <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-white/70 mt-0.5 whitespace-nowrap">
-              SYSTEM UPTIME
+            {/* Right Glass Metric Card */}
+            <div className="sm:absolute sm:top-6 sm:right-0 z-10 px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-2xl bg-black/40 border border-white/15 backdrop-blur-md shadow-lg flex-1 sm:flex-initial text-right">
+              <div className="font-syne font-extrabold text-lg sm:text-2xl text-white tracking-tight whitespace-nowrap">
+                99.98%
+              </div>
+              <div className="text-[8.5px] sm:text-[10px] font-mono uppercase tracking-wider text-white/70 mt-0.5 whitespace-nowrap">
+                SYSTEM UPTIME
+              </div>
             </div>
           </div>
 

@@ -97,6 +97,9 @@ const GALLERY_CARDS: GalleryCard[] = [
 ];
 
 export function Motion3DGallery() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [mode, setMode] = useState<ProjectionMode>("HELIX");
   const [rotationAngle, setRotationAngle] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
@@ -112,8 +115,36 @@ export function Motion3DGallery() {
   const total = GALLERY_CARDS.length;
   const stepAngle = 360 / total;
 
-  // Continuous smooth auto-orbit animation loop
+  // Responsive mobile detection (Zero layout lag)
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile, { passive: true });
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // IntersectionObserver: Sleep animation when offscreen (0% CPU load on low-end Pentium CPUs)
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.08 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Continuous smooth auto-orbit animation loop (only executes when visible on screen)
+  useEffect(() => {
+    if (!isVisible) return; // Completely freeze loop when scrolled away
+
     let animId: number;
     let lastTime = performance.now();
 
@@ -131,7 +162,7 @@ export function Motion3DGallery() {
 
     animId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animId);
-  }, [isAutoPlay, isDragging, isHovered]);
+  }, [isVisible, isAutoPlay, isDragging, isHovered]);
 
   // Step controls
   const handleNext = useCallback(() => {
@@ -204,16 +235,16 @@ export function Motion3DGallery() {
     const cardAngleDeg = (rotationAngle + index * stepAngle) % 360;
     const thetaRad = (cardAngleDeg * Math.PI) / 180;
 
-    // Radii of 3D cylinder
-    const radiusX = 330;
-    const radiusZ = 190;
+    // Radii of 3D cylinder (Scaled responsively so mobile never overflows horizontally)
+    const radiusX = isMobile ? 145 : 330;
+    const radiusZ = isMobile ? 90 : 190;
 
     const translateX = Math.sin(thetaRad) * radiusX;
     const translateZ = (Math.cos(thetaRad) - 1) * radiusZ; // Front: 0px, Back: -380px
 
     let translateY = 0;
     let rotateX = 0;
-    let rotateY = -Math.sin(thetaRad) * 38; // Face smoothly toward center viewer
+    let rotateY = -Math.sin(thetaRad) * (isMobile ? 24 : 38); // Face smoothly toward center viewer
 
     switch (mode) {
       case "HELIX": {
@@ -261,7 +292,7 @@ export function Motion3DGallery() {
   };
 
   return (
-    <section id="gallery" className="relative py-24 sm:py-32 w-full select-none overflow-hidden bg-[#101115] border-t border-white/[0.08]">
+    <section ref={sectionRef} id="gallery" className="relative py-16 sm:py-32 w-full select-none overflow-hidden bg-[#101115] border-t border-white/[0.08]">
       {/* Scroll / Rotation Progress Bar */}
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-white/10 overflow-hidden">
         <div
@@ -279,7 +310,7 @@ export function Motion3DGallery() {
                 03 / 3D SPATIAL LAB GALLERY
               </span>
             </div>
-            <h2 className="font-syne font-bold text-3xl sm:text-4xl text-white mt-1.5 tracking-tight">
+            <h2 className="font-syne font-bold text-2xl sm:text-4xl text-white mt-1.5 tracking-tight">
               Reverse-Engineered Motion+ 3D Projections.
             </h2>
           </div>
@@ -311,14 +342,14 @@ export function Motion3DGallery() {
             <div className="flex items-center gap-2">
               <MagneticButton
                 onClick={handlePrev}
-                className="p-2.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/15 text-white transition-colors cursor-pointer"
+                className="p-2 sm:p-2.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/15 text-white transition-colors cursor-pointer"
                 aria-label="Previous Project"
               >
                 <ArrowLeft className="h-4 w-4" />
               </MagneticButton>
               <MagneticButton
                 onClick={handleNext}
-                className="p-2.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/15 text-white transition-colors cursor-pointer"
+                className="p-2 sm:p-2.5 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white/15 text-white transition-colors cursor-pointer"
                 aria-label="Next Project"
               >
                 <ArrowRight className="h-4 w-4" />
@@ -335,11 +366,12 @@ export function Motion3DGallery() {
           onPointerLeave={handlePointerUp}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className="relative h-[480px] sm:h-[530px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+          className="relative h-[430px] sm:h-[530px] w-full flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
           style={{
-            perspective: "1100px",
+            perspective: isMobile ? "750px" : "1100px",
             perspectiveOrigin: "center 48%",
             transformStyle: "preserve-3d",
+            touchAction: "pan-y",
           }}
         >
           {GALLERY_CARDS.map((card, idx) => {
@@ -358,7 +390,7 @@ export function Motion3DGallery() {
                     setRotationAngle(targetAngle);
                   }
                 }}
-                className={`absolute w-[260px] sm:w-[295px] h-[380px] sm:h-[415px] rounded-3xl border transition-colors duration-200 p-5 sm:p-6 flex flex-col justify-between cursor-pointer group ${
+                className={`absolute w-[235px] sm:w-[295px] h-[345px] sm:h-[415px] rounded-3xl border transition-colors duration-200 p-4 sm:p-6 flex flex-col justify-between cursor-pointer group ${
                   isFront
                     ? "border-amber-400/50 bg-[#161822]/98 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_30px_rgba(245,158,11,0.18)] ring-1 ring-amber-400/30"
                     : "border-white/15 bg-[#141620]/90 backdrop-blur-md shadow-xl"
@@ -378,7 +410,7 @@ export function Motion3DGallery() {
                 </div>
 
                 {/* Card Top Information */}
-                <div className="space-y-3">
+                <div className="space-y-2.5 sm:space-y-3">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="text-neutral-400 font-bold">[{card.number}]</span>
                     <span className="px-2 py-0.5 rounded-full border border-white/10 bg-white/[0.04] text-[10px] text-neutral-300">
@@ -388,26 +420,26 @@ export function Motion3DGallery() {
 
                   {/* Gradient Visual Pod */}
                   <div
-                    className={`h-24 sm:h-28 w-full rounded-2xl bg-gradient-to-br ${card.gradient} p-3.5 sm:p-4 flex flex-col justify-between relative overflow-hidden shadow-inner border border-white/15`}
+                    className={`h-20 sm:h-28 w-full rounded-2xl bg-gradient-to-br ${card.gradient} p-3 sm:p-4 flex flex-col justify-between relative overflow-hidden shadow-inner border border-white/15`}
                   >
                     <div className="flex items-center justify-between text-white/90">
-                      <span className="font-mono text-[10px] uppercase tracking-wider font-semibold">
+                      <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold">
                         {card.category}
                       </span>
                       <Activity className="h-3.5 w-3.5" />
                     </div>
 
-                    <div className="font-syne font-extrabold text-xs sm:text-sm text-white flex items-center justify-between">
+                    <div className="font-syne font-extrabold text-[11px] sm:text-sm text-white flex items-center justify-between">
                       <span className="tracking-wider">VERIFIED</span>
-                      <span className="font-mono text-[11px] font-normal">{card.metric}</span>
+                      <span className="font-mono text-[10px] sm:text-[11px] font-normal">{card.metric}</span>
                     </div>
                   </div>
 
-                  <h3 className="font-syne font-bold text-base sm:text-lg text-white tracking-tight leading-snug">
+                  <h3 className="font-syne font-bold text-sm sm:text-lg text-white tracking-tight leading-snug line-clamp-1 sm:line-clamp-none">
                     {card.title}
                   </h3>
 
-                  <p className="text-xs text-neutral-300 font-light leading-relaxed line-clamp-3">
+                  <p className="text-[11px] sm:text-xs text-neutral-300 font-light leading-relaxed line-clamp-2 sm:line-clamp-3">
                     {card.description}
                   </p>
                 </div>

@@ -73,11 +73,11 @@ export function EditorialNav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out px-4 sm:px-8 lg:px-12 py-4 flex items-center justify-between ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out px-3.5 sm:px-8 lg:px-12 py-3 sm:py-4 flex items-center justify-between ${
         hidden ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
       } ${
         scrolled
-          ? "bg-[#141518]/90 backdrop-blur-md border-b border-white/[0.08] shadow-xl py-3"
+          ? "bg-[#141518]/90 backdrop-blur-md border-b border-white/[0.08] shadow-xl py-2.5 sm:py-3"
           : "bg-transparent"
       }`}
     >
@@ -85,16 +85,16 @@ export function EditorialNav() {
       <Link
         href="/"
         onClick={() => playSound("click")}
-        className="group flex items-center gap-3 select-none"
+        className="group flex items-center gap-2 sm:gap-3 select-none shrink-0"
       >
-        <div className="w-9 h-5 bg-[#F4F4F6] rounded-l-full rounded-r-none transition-transform group-hover:scale-105 duration-200" />
-        <span className="text-base sm:text-lg font-syne font-bold text-[#F4F4F6] tracking-tight">
+        <div className="w-7 h-4 sm:w-9 sm:h-5 bg-[#F4F4F6] rounded-l-full rounded-r-none transition-transform group-hover:scale-105 duration-200" />
+        <span className="text-sm sm:text-lg font-syne font-bold text-[#F4F4F6] tracking-tight whitespace-nowrap">
           Saif Alii
         </span>
       </Link>
 
       {/* Right: Connected Navigation Capsule (Hidden in Hero, Appears when scrolling under Hero - User Request 2) */}
-      <div className="h-10 flex items-center">
+      <div className="h-9 sm:h-10 flex items-center">
         <AnimatePresence>
           {pastHero && (
             <motion.nav
@@ -102,7 +102,7 @@ export function EditorialNav() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -16, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 380, damping: 26 }}
-              className="relative p-1 rounded-full border border-white/15 bg-[#1C1E26]/90 backdrop-blur-md flex items-center shadow-lg shadow-black/40"
+              className="relative p-0.5 sm:p-1 rounded-full border border-white/15 bg-[#1C1E26]/90 backdrop-blur-md flex items-center shadow-lg shadow-black/40"
             >
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
@@ -110,7 +110,7 @@ export function EditorialNav() {
                   <button
                     key={item.id}
                     onClick={() => scrollTo(item.id)}
-                    className={`relative z-10 px-4 sm:px-5 py-1.5 rounded-full text-xs font-sans font-medium transition-colors duration-200 cursor-pointer ${
+                    className={`relative z-10 px-3 sm:px-5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-sans font-medium transition-colors duration-200 cursor-pointer ${
                       isActive
                         ? "text-black font-semibold"
                         : "text-neutral-400 hover:text-white"

@@ -15,7 +15,7 @@ export default function HomePage() {
   const [selectedDrawerProject, setSelectedDrawerProject] = useState<Project | null>(null);
 
   return (
-    <main className="relative min-h-screen flex flex-col bg-[#141518] text-[#F4F4F6] font-sans antialiased selection:bg-[#EAB308] selection:text-black">
+    <main className="relative min-h-screen flex flex-col bg-[#141518] text-[#F4F4F6] font-sans antialiased selection:bg-[#EAB308] selection:text-black overflow-x-hidden w-full max-w-full">
       {/* Editorial Top Navigation */}
       <EditorialNav />
 

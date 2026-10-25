@@ -245,8 +245,8 @@ export function EditorialFooter() {
               <div className="relative pt-6 pb-2">
                 {/* Floating Tooltip Bubble that tracks the thumb */}
                 <div
-                  className="absolute top-0 -translate-x-1/2 px-2 py-0.5 rounded-md bg-amber-400 text-black text-[11px] font-mono font-bold shadow-md pointer-events-none transition-all duration-75"
-                  style={{ left: `${sliderPercentage}%` }}
+                  className="absolute top-0 -translate-x-1/2 px-2 py-0.5 rounded-md bg-amber-400 text-black text-[11px] font-mono font-bold shadow-md pointer-events-none transition-all duration-75 whitespace-nowrap"
+                  style={{ left: `clamp(24px, ${sliderPercentage}%, calc(100% - 24px))` }}
                 >
                   ${budgetValue.toLocaleString()}
                   <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-solid border-t-amber-400 border-t-4 border-x-transparent border-x-4 border-b-0" />
@@ -263,9 +263,9 @@ export function EditorialFooter() {
                 />
 
                 <div className="flex justify-between text-[10px] font-mono text-neutral-500 pt-2 px-0.5">
-                  <span>${minBudget} (Starter MVP)</span>
-                  <span>$8,000 (Standard)</span>
-                  <span>${maxBudget.toLocaleString()}+ (Enterprise)</span>
+                  <span>${minBudget} <span className="hidden sm:inline">(Starter)</span></span>
+                  <span>$8k <span className="hidden sm:inline">(Standard)</span></span>
+                  <span>${maxBudget.toLocaleString()}+ <span className="hidden sm:inline">(Enterprise)</span></span>
                 </div>
               </div>
             </div>

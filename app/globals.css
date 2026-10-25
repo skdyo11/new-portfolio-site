@@ -103,6 +103,50 @@ body {
   will-change: background-position;
 }
 
+/* Hardware-Accelerated Compositor Keyframes (0% CPU Load on Low-End Pentium Processors) */
+@keyframes floatGentle1 {
+  0%, 100% { transform: translate3d(0, 0px, 0) rotate(-1deg); }
+  50% { transform: translate3d(0, -9px, 0) rotate(1.5deg); }
+}
+
+@keyframes floatGentle2 {
+  0%, 100% { transform: translate3d(0, 0px, 0) rotate(1deg); }
+  50% { transform: translate3d(0, 8px, 0) rotate(-1.5deg); }
+}
+
+@keyframes floatGentle3 {
+  0%, 100% { transform: translate3d(0, 0px, 0) rotate(-1deg); }
+  50% { transform: translate3d(0, -8px, 0) rotate(1.5deg); }
+}
+
+@keyframes floatGentle4 {
+  0%, 100% { transform: translate3d(0, 0px, 0) scale(1) rotate(-1deg); }
+  50% { transform: translate3d(0, 7px, 0) scale(1.02) rotate(1.5deg); }
+}
+
+@keyframes floatGentle5 {
+  0%, 100% { transform: translate3d(0, 0px, 0) rotate(1deg); }
+  50% { transform: translate3d(0, -8px, 0) rotate(-1.5deg); }
+}
+
+@keyframes floatGentle6 {
+  0%, 100% { transform: translate3d(0, 0px, 0) rotate(-1.5deg); }
+  50% { transform: translate3d(0, 9px, 0) rotate(1.5deg); }
+}
+
+@keyframes portraitBreathe {
+  0%, 100% { transform: translate3d(0, 0px, 0) scale(1); }
+  50% { transform: translate3d(0, -7px, 0) scale(1.012); }
+}
+
+.animate-float-1 { animation: floatGentle1 4.6s ease-in-out infinite; will-change: transform; }
+.animate-float-2 { animation: floatGentle2 5.2s ease-in-out 0.3s infinite; will-change: transform; }
+.animate-float-3 { animation: floatGentle3 4.8s ease-in-out 0.7s infinite; will-change: transform; }
+.animate-float-4 { animation: floatGentle4 5.0s ease-in-out 0.2s infinite; will-change: transform; }
+.animate-float-5 { animation: floatGentle5 4.4s ease-in-out 0.5s infinite; will-change: transform; }
+.animate-float-6 { animation: floatGentle6 5.4s ease-in-out 0.9s infinite; will-change: transform; }
+.animate-portrait-breathe { animation: portraitBreathe 6.0s ease-in-out infinite; will-change: transform; }
+
 /* Custom Text Selection */
 ::selection {
   background: #F7F7F5;
