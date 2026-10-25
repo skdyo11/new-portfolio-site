@@ -23,7 +23,7 @@ const AudioContext = createContext<AudioContextType>({
 export function AudioProvider({ children }: { children: React.ReactNode }) {
   const [isMuted, setIsMuted] = useState(false);
   const [isAudioInitialized, setIsAudioInitialized] = useState(false);
-  const audioCtxRef = useRef<window.AudioContext | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
 
   // Initialize Web Audio API on first user interaction
   const initializeAudio = useCallback(() => {
